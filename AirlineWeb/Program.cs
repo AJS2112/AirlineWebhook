@@ -1,4 +1,5 @@
 using AirlineWeb.Data;
+using AirlineWeb.MessageBus;
 using Microsoft.EntityFrameworkCore;
 
 namespace AirlineWeb
@@ -17,7 +18,8 @@ namespace AirlineWeb
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());    
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
 
             var app = builder.Build();
 
